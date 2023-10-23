@@ -1,0 +1,71 @@
+.heade{
+    width: 100%;
+    height: 80px;
+
+}
+.heade2{
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.logo{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 150px;
+    height: 30px;
+    
+}
+.headbut{
+    margin-top: 18px;
+    margin-left: 50px;
+    color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 4px;
+    background: var(--main-secondary, #70C05B);
+    border: none;
+    display: flex;
+    
+}
+.imm{
+    margin-top: 6px;
+    margin-left: 15px;
+}
+.ppp{
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.headinp{
+    margin-left: 100px;
+    border: 1px solid #70C05B;
+    margin-top: 18px;
+    border-radius: 4px;
+    width: 300px;
+    height: 40px;
+}
+.headsearch{
+    width: 25px;
+    height: 25px;
+    margin-top: 25px;
+    margin-left: -40px;
+}
+.menu-icon{
+    width: 60px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 70px;
+}
+.menu-iconn{
+    width: 45px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+.user{
+    width: 180px;
+    height: 50px;
+    margin-top: 13px;
+    margin-left: 30px;
+}
