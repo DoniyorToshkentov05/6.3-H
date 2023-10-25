@@ -1,63 +1,57 @@
-import './App.css';
-import Admin from './components/Admin/Admin';
-import Header from './components/Header/Header';
-// import Content from './components/Content/Content';
-import { useEffect, useState } from 'react';
-import Products from './components/products/Products';
 
-// Define a function to generate a unique ID
-const uid = () => {
-  return Math.random().toString(36).substring(2);
-};
-
-// Define a default image URL
-const defaultImg = 'https://picsum.photos/seed/picsum/200/300';
+import { useEffect, useState } from 'react'
+import './App.css'
+import AddProduct from './components/AddProduct'
+import Header from './components/Header/Header'
+import { uid } from 'uid';
+import Products from './components/Products';
 
 const getLocalStorage = () => {
   return localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
-};
+}
 
 function App() {
+
+  const id = uid();
+  const img = 'https://picsum.photos/id/1/200/300';
+
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [list, setList] = useState(getLocalStorage());
+ 
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Fix the typo, it should be 'preventDefault', not 'preventDefult'
-    
-    // Generate a unique ID and use the default image if not provided
-    const id = uid();
-    const img = defaultImg;
-    
+    e.preventDefault();
     const newItem = { id: id, name: title, narx: price, image: img };
-    
-    // Update the list with the new item
     setList([...list, newItem]);
-    
-    // Clear the input fields after submission
-    setTitle('');
-    setPrice('');
+    setTitle('')
+    setPrice('')
+  }
+
+  const removeItem = (id) => {
+    const newItem = list.filter((item) => item.id !== id)
+    setList(newItem);
   }
 
   useEffect(() => {
-    // Store the list in local storage whenever it changes
     localStorage.setItem('products', JSON.stringify(list));
   }, [list]);
 
   return (
+   
     <>
-      <Header/>
-      <Admin
+     <Header/>
+      <AddProduct
         title={title}
         setTitle={setTitle}
         price={price}
         setPrice={setPrice}
         handleSubmit={handleSubmit}
       />
- 
-      <Products list={list}/>
-    </>
+      <Products list={list} removeItem={removeItem} />
+     </>
   )
 }
 
-export default App;
+export default App
